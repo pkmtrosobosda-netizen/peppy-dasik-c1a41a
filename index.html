@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pelayanan Kesehatan Balita Ditimbang (D/S)</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f1fbf6;--card:#fff;--tx:#12372a;--mu:#5b7a6c;--pr:#12a37f;--ac:#ff9f43;--bd:#d5eee3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1f19;--card:#162d25;--tx:#e6f6ee;--mu:#9bbbad;--pr:#2fd0a4;--ac:#ffb066;--bd:#25483c}}
+:root[data-theme="dark"]{--bg:#0e1f19;--card:#162d25;--tx:#e6f6ee;--mu:#9bbbad;--pr:#2fd0a4;--ac:#ffb066;--bd:#25483c}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Poppins','Segoe UI',system-ui,sans-serif;line-height:1.55}
+.hero{background:linear-gradient(135deg,#0f8f70,#23c19a 60%,#7be0b8);color:#fff;padding:48px 20px 70px;text-align:center;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero:before{width:240px;height:240px;left:-70px;top:-70px}.hero:after{width:180px;height:180px;right:-50px;bottom:-60px}
+.hero .em{font-size:54px}
+.hero h1{margin:6px auto 8px;font-size:clamp(24px,5vw,40px);max-width:760px;line-height:1.2}
+.hero p{margin:0 auto;max-width:620px;opacity:.95}
+.btn{display:inline-block;margin-top:20px;padding:12px 24px;border-radius:99px;background:#fff;color:#0f8f70;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700}
+main{max-width:1040px;margin:-40px auto 40px;padding:0 16px;position:relative}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:20px;margin-bottom:20px;box-shadow:0 6px 20px rgba(18,163,127,.08)}
+h2{margin:0 0 12px;font-size:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stat{border-radius:16px;padding:14px 16px;background:linear-gradient(135deg,rgba(18,163,127,.12),rgba(255,159,67,.12))}
+.stat b{display:block;font-size:22px;color:var(--pr)}.stat span{color:var(--mu);font-size:14px}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;align-items:end}
+label{font-size:13px;color:var(--mu);display:block}
+input[type=number],input[type=text]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+.res{font-size:26px;font-weight:700;color:var(--ac)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{padding:8px 18px;border-radius:99px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;font:inherit}
+.tab.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.drop{border:2px dashed var(--pr);border-radius:18px;padding:26px;text-align:center;cursor:pointer;background:rgba(18,163,127,.06)}
+.drop.over{background:rgba(18,163,127,.18)}
+.drop .big{font-size:38px}.drop small{color:var(--mu)}
+.up{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:12px}
+.go{padding:10px 22px;border-radius:12px;border:0;background:var(--pr);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.go:disabled{opacity:.5}
+#msg{margin-top:8px;font-size:14px;color:var(--mu)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.it{border:1px solid var(--bd);border-radius:18px;overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+.pv{height:190px;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pv img,.pv video{width:100%;height:100%;object-fit:cover}
+.pv iframe{width:100%;height:100%;border:0}
+.pv .ico{font-size:60px}
+.bd{padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.bd b{word-break:break-word}
+.row{display:flex;gap:8px;margin-top:auto}
+.row a,.row button{flex:1;text-align:center;padding:8px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);text-decoration:none;font:inherit;font-size:13px;cursor:pointer}
+.empty{text-align:center;color:var(--mu);padding:30px 10px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9;padding:16px}
+.modal.on{display:flex}.modal>div{width:min(960px,100%);height:min(85%,640px);background:#000;border-radius:14px;overflow:hidden;position:relative}
+.modal iframe,.modal video,.modal img{width:100%;height:100%;border:0;object-fit:contain;background:#000}
+.x{position:absolute;top:8px;right:8px;z-index:2;border:0;border-radius:99px;width:36px;height:36px;font-size:18px;cursor:pointer}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:10px 16px 30px}
+</style></head><body>
+<header class="hero">
+<div class="em">⚖️👶</div>
+<h1>Pelayanan Kesehatan Balita Ditimbang Berat Badannya (D/S)</h1>
+<p>Galeri poster &amp; video edukasi Posyandu. Timbang balita setiap bulan, pantau tumbuh kembang, cegah stunting.</p>
+<a class="btn" href="#galeri">Lihat Galeri</a>
+</header>
+<main>
+<section class="card">
+<h2>📊 Apa itu D/S?</h2>
+<div class="stats">
+<div class="stat"><b>D</b><span>Jumlah balita yang ditimbang di Posyandu pada bulan tersebut</span></div>
+<div class="stat"><b>S</b><span>Jumlah seluruh balita (sasaran) di wilayah kerja</span></div>
+<div class="stat"><b>D/S × 100%</b><span>Cakupan balita ditimbang berat badannya</span></div>
+</div>
+<h2 style="margin-top:18px">🧮 Hitung Cakupan D/S</h2>
+<div class="calc">
+<div><label>D (balita ditimbang)</label><input id="d" type="number" min="0" placeholder="mis. 85"></div>
+<div><label>S (sasaran balita)</label><input id="s" type="number" min="0" placeholder="mis. 100"></div>
+<div><label>Hasil</label><div class="res" id="r">– %</div></div>
+</div>
+</section>
+
+<section class="card" id="up">
+<h2>⬆️ Unggah Poster / Video</h2>
+<div class="drop" id="drop"><div class="big">📁</div><b>Klik atau seret file ke sini</b><br><small>Poster: gambar, PDF · Video: MP4/WebM · maks. 20 MB per file</small></div>
+<input id="file" type="file" hidden accept="image/*,video/*,application/pdf,.doc,.docx,.ppt,.pptx">
+<div class="up"><input id="ttl" type="text" placeholder="Judul (mis. Poster Timbang Balita)"><button class="go" id="go" disabled>Unggah</button></div>
+<div id="msg"></div>
+</section>
+
+<section class="card" id="galeri">
+<h2>🖼️ Galeri</h2>
+<div class="tabs"><button class="tab on" data-f="all">Semua</button><button class="tab" data-f="poster">Poster</button><button class="tab" data-f="video">Video</button></div>
+<div class="grid" id="grid"></div>
+</section>
+</main>
+<footer>Posyandu · Timbang balita tiap bulan 💚</footer>
+<div class="modal" id="md"><div><button class="x" id="mx">✕</button><div id="mc" style="width:100%;height:100%"></div></div></div>
+<script type="application/json" id="data">[]</script>
+<script>
+const $=id=>document.getElementById(id);
+let items=[],filter='all',picked=null,assets=null,art=null;
+try{items=JSON.parse($('data').textContent||'[]')}catch(e){}
+const kind=(t,n)=>t.startsWith('video')?'video':t.startsWith('image')?'poster-img':'poster-doc';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function upd(){const d=+$('d').value,s=+$('s').value;$('r').textContent=s>0?(d/s*100).toFixed(1)+' %':'– %'}
+$('d').oninput=$('s').oninput=upd;
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');filter=b.dataset.f;render()});
+function render(){
+ const g=$('grid');const list=items.filter(i=>filter==='all'||(filter==='video')===(i.kind==='video'));
+ if(!list.length){g.innerHTML='<div class="empty" style="grid-column:1/-1">Belum ada file. Unggah poster atau video pertama Anda di atas ✨</div>';return}
+ g.innerHTML=list.map(i=>{
+  const ext=/\.(docx?|pptx?)$/i.test(i.name||'');
+  let pv=i.kind==='video'?`<video src="${i.url}" preload="metadata" muted></video>`:i.kind==='poster-img'?`<img src="${i.url}" alt="${esc(i.title)}">`:ext?'<div class="ico">📝</div>':'<div class="ico">📄</div>';
+  const canv=!ext;
+  return `<div class="it"><div class="pv">${pv}</div><div class="bd"><b>${esc(i.title)}</b><small style="color:var(--mu)">${i.kind==='video'?'🎬 Video':'🖼️ Poster'}</small><div class="row">${canv?`<button data-v="${i.id}">Lihat</button>`:''}<a href="${i.url}" download="${esc(i.name||i.title)}" target="_blank">Unduh</a>${i.own?`<button data-x="${i.id}">🗑️</button>`:''}</div></div></div>`}).join('');
+ g.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>show(items.find(i=>i.id===b.dataset.v)));
+ g.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>del(items.find(i=>i.id===b.dataset.x)));
+}
+function show(i){
+ $('mc').innerHTML=i.kind==='video'?`<video src="${i.url}" controls autoplay></video>`:i.kind==='poster-img'?`<img src="${i.url}">`:`<iframe src="${i.url}"></iframe>`;
+ $('md').classList.add('on')}
+const close=()=>{$('md').classList.remove('on');$('mc').innerHTML=''};
+$('mx').onclick=close;$('md').onclick=e=>{if(e.target===$('md'))close()};
+const drop=$('drop');
+drop.onclick=()=>$('file').click();
+drop.ondragover=e=>{e.preventDefault();drop.classList.add('over')};
+drop.ondragleave=()=>drop.classList.remove('over');
+drop.ondrop=e=>{e.preventDefault();drop.classList.remove('over');pick(e.dataTransfer.files[0])};
+$('file').onchange=e=>pick(e.target.files[0]);
+function pick(f){if(!f)return;picked=f;if(!$('ttl').value)$('ttl').value=f.name.replace(/\.[^.]+$/,'');$('go').disabled=false;$('msg').textContent='Dipilih: '+f.name+' ('+(f.size/1048576).toFixed(1)+' MB)'}
+async function save(){
+ const c=document.documentElement.cloneNode(true);
+ c.querySelector('#data').textContent=JSON.stringify(items).replace(/</g,'\\u003c');
+ c.querySelector('#grid').innerHTML='';c.querySelector('#msg').textContent='';c.querySelector('#mc').innerHTML='';c.querySelector('#md').className='modal';
+ c.querySelector('#ttl').removeAttribute('value');c.querySelector('#go').setAttribute('disabled','');
+ await art.publish('<!DOCTYPE html>\n'+c.outerHTML);
+}
+$('go').onclick=async()=>{
+ if(!picked)return;if(!assets||!art){$('msg').textContent='Tidak bisa menyimpan: kamu belum membuka halaman sebagai pemilik (login akun Claude yang membuat halaman ini).';return}$('go').disabled=true;$('msg').textContent='Mengunggah & menyimpan permanen…';
+ const title=$('ttl').value.trim()||picked.name,k=kind(picked.type||'',picked.name);
+ try{
+  const r=await assets.upload(picked);
+  items.unshift({id:'i'+Date.now(),title,name:picked.name,kind:k,url:'/_blob/'+r.id,assetId:r.id});
+  await save();
+ }catch(e){if(e&&e.code==='conflict')return;$('msg').textContent='Gagal ['+(e&&e.code||'error')+']: '+(e&&e.message||'file tidak didukung')+'. Untuk Word, ubah dulu ke PDF lalu unggah.';$('go').disabled=false}
+};
+async function del(i){
+ if(!confirm('Hapus "'+i.title+'" secara permanen?'))return;
+ try{items=items.filter(x=>x.id!==i.id);await save();try{await assets.delete(i.assetId)}catch(e){}}catch(e){$('msg').textContent='Gagal menghapus'}}
+(async()=>{
+ try{assets=await claude.use('assets');art=await claude.use('artifact')}catch(e){}
+ if(!assets||!art)$('msg').innerHTML='⚠️ Fitur simpan permanen belum aktif di tampilan ini ('+(assets?'':'assets ')+(art?'':'artifact')+'). Buka link dari akun Claude Anda (pemilik) lewat tombol Open/Buka di kartu publish, bukan lewat link bagikan atau pratinjau.';
+ items.forEach(x=>x.own=!!(assets&&art));
+ render();
+})();
+render();
+</script>
+</body></html>
